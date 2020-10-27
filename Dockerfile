@@ -20,9 +20,9 @@ RUN docker-php-ext-install mysqli pdo_mysql mbstring exif pcntl pdo bcmath
 RUN docker-php-ext-configure gd --with-gd --with-jpeg-dir=/usr/include/ --with-png-dir=/usr/include/
 RUN docker-php-ext-install gd
 
-RUN curl -LJO https://github.com/Leantime/leantime/releases/download/v${LEAN_VERSION}/Leantime-v${LEAN_VERSION}.tar.gz && \
-    tar -zxvf Leantime-v${LEAN_VERSION}.tar.gz --strip-components 1 && \
-    rm Leantime-v${LEAN_VERSION}.tar.gz
+RUN curl -LJO https://github.com/pedromacarmo/leantime/archive/master.zip && \
+    tar -zxvf master.zip --strip-components 1 && \
+    rm master.zip
 
 RUN chown www-data -R .
 
