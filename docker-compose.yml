@@ -18,6 +18,8 @@ services:
    web:
      image: leantime/leantime:latest
      container_name: leantime
+      volumes:
+        -./data:/www/html
      environment:
          LEAN_DB_HOST: 'mysql_leantime'
          LEAN_DB_USER: 'admin'
