@@ -1,44 +1,46 @@
 version: '3.3'
 
 services:
-   db:
-     image: mariadb
-     container_name: mysql_leantime
-     volumes:
-       - db_data:/var/lib/mysql
-     restart: always
-     environment:
-         MYSQL_ROOT_PASSWORD: '321.qwerty'
-         MYSQL_DATABASE: 'leantime'
-         MYSQL_USER: 'admin'
-         MYSQL_PASSWORD: '321.qwerty'
-     ports:
-       - "8022:3306"
-     command: --character-set-server=utf8 --collation-server=utf8_unicode_ci
-   web:
-     image: leantime/leantime:latest
-     container_name: leantime
-      volumes:
-        -./data:/www/html
-     environment:
-         LEAN_DB_HOST: 'mysql_leantime'
-         LEAN_DB_USER: 'admin'
-         LEAN_DB_PASSWORD: '321.qwerty'
-         LEAN_DB_DATABASE: 'leantime'
-     ports:
-       - "8023:9000"
-       - "8024:80"
-     depends_on:
-       - db
+  db:
+    image: mariadb
+    container_name: mysql_leantime
+    volumes:
+      - db_data:/var/lib/mysql
+    restart: always
+    environment:
+        MYSQL_ROOT_PASSWORD: '321.qwerty'
+        MYSQL_DATABASE: 'leantime'
+        MYSQL_USER: 'admin'
+        MYSQL_PASSWORD: '321.qwerty'
+    ports:
+      - "8022:3306"
+    command: --character-set-server=utf8 --collation-server=utf8_unicode_ci
+  
+  web:
+    image: leantime/leantime:latest
+    container_name: leantime
+    volumes:
+      - ./data:/www/html
+    environment:
+        LEAN_DB_HOST: 'mysql_leantime'
+        LEAN_DB_USER: 'admin'
+        LEAN_DB_PASSWORD: '321.qwerty'
+        LEAN_DB_DATABASE: 'leantime'
+    ports:
+      - "8023:9000"
+      - "8024:80"
+    depends_on:
+      - db
 
-    phpmyadmin:
-      image: phpmyadmin/phpmyadmin
-      ports:
-        - "8025:80"
-      links:
-        - "db:db"
-      environment:
-        - PMA_HOST=db 
-      restart: always        
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    ports:
+      - "8025:80"
+    links:
+      - "db:db"
+    environment:
+      - PMA_HOST=db 
+    restart: always        
+
 volumes:
     db_data: {}
