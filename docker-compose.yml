@@ -13,7 +13,7 @@ services:
         MYSQL_USER: 'admin'
         MYSQL_PASSWORD: '321.qwerty'
     ports:
-      - "8023:3306"
+      - "8020:3306"
     command: --character-set-server=utf8 --collation-server=utf8_unicode_ci
   
   web:
@@ -27,15 +27,15 @@ services:
         LEAN_DB_PASSWORD: '321.qwerty'
         LEAN_DB_DATABASE: 'leantime'
     ports:
-      - "8024:9000"
-      - "8025:80"
+      - "8021:9000"
+      - "8019:80"
     depends_on:
       - db
 
   phpmyadmin:
     image: phpmyadmin/phpmyadmin
     ports:
-      - "8026:80"
+      - "8022:80"
     links:
       - "db:db"
     environment:
