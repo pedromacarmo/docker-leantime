@@ -22,7 +22,7 @@ services:
     volumes:
       - ./data:/www/html
     environment:
-        LEAN_DB_HOST: 'mysql_leantime'
+        LEAN_DB_HOST: 'mysql_leantime_armilustrium'
         LEAN_DB_USER: 'admin'
         LEAN_DB_PASSWORD: '321.qwerty'
         LEAN_DB_DATABASE: 'leantime'
