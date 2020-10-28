@@ -13,12 +13,17 @@ RUN apk update && apk add --no-cache \
     supervisor \
     apache2 \
     apache2-ctl \
-    apache2-proxy
+    apache2-proxy \
+    nodejs \
+    npm
 
 # Installing extensions
 RUN docker-php-ext-install mysqli pdo_mysql mbstring exif pcntl pdo bcmath
 RUN docker-php-ext-configure gd --with-gd --with-jpeg-dir=/usr/include/ --with-png-dir=/usr/include/
 RUN docker-php-ext-install gd
+
+# Install composer
+RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 
 RUN curl -LJO https://github.com/pedromacarmo/leantime/archive/master.zip && \
     tar -zxvf master.zip --strip-components 1 && \
