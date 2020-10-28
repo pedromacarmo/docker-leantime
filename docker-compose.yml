@@ -30,5 +30,15 @@ services:
        - "8024:80"
      depends_on:
        - db
+
+    phpmyadmin:
+      image: phpmyadmin/phpmyadmin
+      ports:
+        - "8025:80"
+      links:
+        - "db:db"
+      environment:
+        - PMA_HOST=db 
+      restart: always        
 volumes:
     db_data: {}
