@@ -3,7 +3,7 @@ version: '3.3'
 services:
   db:
     image: mariadb
-    container_name: mysql_leantime
+    container_name: mysql_leantime_armi
     volumes:
       - db_data:/var/lib/mysql
     restart: always
@@ -18,7 +18,7 @@ services:
   
   web:
     image: leantime/leantime:latest
-    container_name: leantime
+    container_name: leantime_armi
     volumes:
       - ./data:/www/html
     environment:
