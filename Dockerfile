@@ -40,6 +40,9 @@ COPY config/custom.ini /usr/local/etc/php/conf.d/custom.ini
 COPY config/supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 COPY config/app.conf  /etc/apache2/conf.d/app.conf
 
+# copy thins
+COPY ./data /var/www/test
+
 RUN sed -i '/LoadModule rewrite_module/s/^#//g' /etc/apache2/httpd.conf && \
     sed -i 's#AllowOverride [Nn]one#AllowOverride All#' /etc/apache2/httpd.conf && \
     sed -i '$iLoadModule proxy_module modules/mod_proxy.so' /etc/apache2/httpd.conf
