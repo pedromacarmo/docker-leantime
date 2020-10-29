@@ -21,7 +21,6 @@ services:
     container_name: leantime_armilustrium
     volumes:
       - ./data:/var/www/html
-      - ./userfiles:/var/www/html/userfiles
     environment:
         LEAN_DB_HOST: 'mysql_leantime_armilustrium'
         LEAN_DB_USER: 'admin'
