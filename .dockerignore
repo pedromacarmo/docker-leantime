@@ -1,6 +1,7 @@
 .git
 .vscode
 .DS_store
+*/userfiles*
 data/userfiles
 data/public/userfiles
 /data/userfiles
